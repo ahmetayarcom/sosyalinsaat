@@ -1,0 +1,73 @@
+﻿@model bitirme.Entity.hesap
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sil</title>
+</head>
+<body>
+    <h3>Hesap Silinecek, Emin misiniz?</h3>
+    <div>
+        <h4>Hesap</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.mail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.mail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sifre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sifre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fotograf)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fotograf)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rol)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rol)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hesapType.type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hesapType.type)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Listeye Dön", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

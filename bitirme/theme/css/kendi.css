@@ -1,0 +1,77 @@
+﻿
+.dropicin {
+    width: 30%;
+}
+
+.buttonum1 {
+    background-color: white;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    border: 2px solid #aeaecb;
+    color: #aeaecb;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+
+.buttonum2 {
+    background-color: #d4ca68;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    border: 2px solid #aeaecb;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.buttonum3 {
+    background-color: forestgreen;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    border: 2px solid #aeaecb;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.buttonum4 {
+    background-color: forestgreen;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    border: 2px solid #aeaecb;
+    color: white;
+    padding: 20px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+
+.buttonumAdmin {
+    background-color:darkseagreen;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    border: 2px solid #aeaecb;
+    color: white;
+    padding: 20px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-top:3%;
+    width:70%
+}
+
+.tac {
+    text-align:center;
+}

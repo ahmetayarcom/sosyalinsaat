@@ -1,0 +1,39 @@
+﻿@model bitirme.Entity.hesap
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+
+            @using (Html.BeginForm("Login", "Security", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "login100-form validate-form p-l-55 p-r-55 p-t-178" }))
+            {
+                @Html.AntiForgeryToken()
+                <span class="login100-form-title">
+                    Giriş Yap
+                </span>
+                <div style="color:black;margin-bottom:4%;text-align:center">
+                    @ViewBag.Mesaj
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    @Html.TextBoxFor(m => m.mail, htmlAttributes: new { @class = "form-control", placeholder = "e-mail" })
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                    @Html.PasswordFor(m => m.sifre, htmlAttributes: new { @class = "form-control", placeholder = "şifre", @style = "margin-top:10px" })
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn" style="margin-top:4%;margin-bottom:4%">Giriş</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

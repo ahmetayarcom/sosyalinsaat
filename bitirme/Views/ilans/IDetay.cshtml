@@ -1,0 +1,114 @@
+﻿@using bitirme.Entity;
+@model bitirme.Entity.ilan
+@{
+    ViewBag.Title = "IDetay";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8" style="margin-top:1%">
+        <div class="property-details">
+            <div class="img rounded" style="background-image: url(@Model.foto);"></div>
+            <div class="row">
+                <div class="col-md-6 text">
+                    <h2>@Html.DisplayFor(m => m.ad)</h2>
+                    @*<span class="subheading">@Html.DisplayFor(m => m.durum)</span>*@
+                </div>
+                @if ((User.IsInRole("T2") || User.IsInRole("U2")) && (Model.durum == 1))
+                {
+                    <div class="col-md-6" style="text-align:right">
+                        <a href="@Url.Action("Create","teklif",new { id=Model.ID})" class="buttonum4">Teklif Yap</a>
+                    </div>
+                }
+                @if (Model.durum == 2)
+                {
+                    <div class="col-md-6" style="text-align:right">
+                        <span>Bu İş Gerçekleme Aşamasında</span>
+                    </div>
+                }
+                @if (Model.durum == 3)
+                {
+                    <div class="col-md-6" style="text-align:right">
+                        <span>Bu İş Bitmiş Durumda</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-4" style="margin-top:1%;">
+        <div style="text-align:center;margin-left:0%">
+            <div class="agent" style="width:70%;margin-left:15%">
+                <a href="@Url.Action("MProfil","muteahhit",new { id = Model.proje.muteahhit.ID })">
+                    <div class="img">
+                        <img src="@Model.proje.muteahhit.hesap.fotograf" class="img-fluid" alt="Colorlib Template">
+                    </div>
+                </a>
+                <div class="desc" style="text-align:left">
+                    <h3><span>@Html.DisplayFor(model => model.proje.muteahhit.ad)</span></h3>
+                    <p class="h-info"><span class="fas fa-envelope"></span> <span class="details">@Html.DisplayFor(model => model.proje.muteahhit.hesap.mail)</span></p>
+                    <p class="h-info"><span class="fas fa-hammer"></span> <span class="details">@Html.DisplayFor(model => model.proje.muteahhit.issayisi) ilan</span></p>
+                    <p class="h-info"><span class="fas fa-map-marked-alt"></span> <span class="details">@Html.DisplayFor(model => model.proje.muteahhit.adres)</span></p>
+                    <p class="h-info"><span class="fas fa-phone-alt"></span> <span class="details">@Html.DisplayFor(model => model.proje.muteahhit.telno)</span></p>
+                    <p class="h-info"><span class="fab fa-chrome"></span> <span class="details">@Html.DisplayFor(model => model.proje.muteahhit.webadresi)</span></p>
+                    @*@if (User.Identity.Name == Model.proje.muteahhit.hesap.mail)
+                        {
+                            <hr />
+                            <p>
+                                @Html.ActionLink("Profili Düzenle", "Edit","muteahhit", new { id = Model.proje.muteahhit.hesapID })
+                            </p>
+                        }*@
+                    @if ((User.Identity.Name != Model.proje.muteahhit.hesap.mail))
+                    {
+                        <a href="@Url.Action("MPage","chat",new { id = Model.proje.muteahhit.hesapID })" class="buttonum3">Mesaj Gönder</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 pills">
+        <div class="bd-example bd-example-tabs">
+            <div class="d-flex">
+                <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Detay</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Detay</a>
+                    </li>*@
+                </ul>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="features">
+                                <li class="check"><span class="ion-ios-checkmark-circle"></span>Boyut: @Html.DisplayFor(model => model.boyut)</li>
+                                <li class="check"><span class="ion-ios-checkmark-circle"></span>İstenen Başlangıç Tarihi: @Html.DisplayFor(model => model.baslamaTarih)</li>
+                                <li class="check"><span class="ion-ios-checkmark-circle"></span>İstenen Bitiş Tarihi: @Html.DisplayFor(model => model.bitisTarih)</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            @*<ul class="features">
+                                    <li class="check"><span class="ion-ios-checkmark-circle"></span>Floor Area: 1,300 SQ FT</li>
+                                    <li class="check"><span class="ion-ios-checkmark-circle"></span>Year Build:: 2019</li>
+                                    <li class="check"><span class="ion-ios-checkmark-circle"></span>Water</li>
+                                    <li class="check"><span class="ion-ios-checkmark-circle"></span>Stories: 2</li>
+                                    <li class="check"><span class="ion-ios-checkmark-circle"></span>Roofing: New</li>
+                                </ul>*@
+                        </div>
+                    </div>
+                </div>
+
+
+                @*<div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<bitirme.Entity.teklif>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3>Teklifler ve Devam Eden İşler</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.durum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ilan.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta.ad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fiyat)
+            </td>
+
+            @if (item.durum == 1)
+            {
+                <td>
+                    Beklemede
+                </td>
+            }
+            else if (item.durum == 2)
+            {
+                <td>
+                    Onaylanmış, Devam Ediyor
+                </td>
+            }
+            else if (item.durum == 3)
+            {
+                <td>
+                    Reddedildi
+                </td>
+            }
+            else
+            {
+                <td>
+                    Referans
+                </td>
+
+            }
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.hesap.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ilan.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta.ad)
+            </td>
+            @if (!User.IsInRole("M2"))
+            {
+                <td>
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                </td>
+            }
+            @if (User.IsInRole("M2"))
+            {
+                <td>
+                    @Html.ActionLink("Detay", "Details", new { id = item.ID })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

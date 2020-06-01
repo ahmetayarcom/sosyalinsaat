@@ -1,0 +1,200 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sosyal İnşaatım</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="~/theme/login/images/icons/favicon.ico" />
+
+    <script src="https://kit.fontawesome.com/a2f6943789.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/theme/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/theme/css/animate.css">
+
+    <link rel="stylesheet" href="~/theme/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/theme/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/theme/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/theme/css/aos.css">
+    <link rel="stylesheet" href="~/theme/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/theme/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/theme/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="~/theme/css/flaticon.css">
+    <link rel="stylesheet" href="~/theme/css/icomoon.css">
+    <link rel="stylesheet" href="~/theme/css/style.css">
+    <link rel="stylesheet" href="~/theme/css/kendi.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Sosyal İnşaatım</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Hakkimizda", "Home")" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Ilan", "Home")" class="nav-link">İlanlar</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hizmet Verenler
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68;">
+                            <a class="dropdown-item" href="@Url.Action("Taseronlar", "Home")">Firmalar</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Ustalar", "Home")">Ustalar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="@Url.Action("Iletisim", "Home")" class="nav-link">İletişim</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown" style="background-color:rgb(249,249,249);border-radius:10px">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hesabım
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68">
+                                <a class="dropdown-item" href="@Url.Action("PP", "hesap")">Profil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("MPage", "Chat")">Mesajlar</a>
+                                @if (!User.IsInRole("A"))
+                                {
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "teklif")">Teklifler</a>
+
+                                }
+                                @if (User.IsInRole("A"))
+                                {
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("APanel", "hesap")">Panel</a>
+                                }
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Security")">Çıkış</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="btn btn-primary py-3 px-4 nav-link" style="margin-right:5px;" href="@Url.Action("Login", "Security")">Giriş</a></li>
+                        <li class="nav-item"><a style="" href="@Url.Action("Create", "hesap")" class="btn btn-primary py-3 px-4 nav-link">Kayıt Ol</a></li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+
+    <section class="ftco-section goto-here">
+        <div class="container" style="background-color:rgb(249,249,249);border-radius:20px">
+            @RenderBody()
+
+
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section">
+        @*<div class="container">
+                <div class="row mb-5">
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Findstate</h2>
+                            <p>Far far away, behind the word mountains, far from the countries.</p>
+                            <ul class="ftco-footer-social list-unstyled mt-5">
+                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4 ml-md-4">
+                            <h2 class="ftco-heading-2">Community</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search Properties</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For Agents</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>FAQs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4 ml-md-4">
+                            <h2 class="ftco-heading-2">About Us</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Our Story</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Meet the team</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Company</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About Us</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Press</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+                                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Have a Questions?</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                                    <li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script><i class="icon-heart color-danger" aria-hidden="true"></i>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>*@
+    </footer>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="~/theme/js/jquery.min.js"></script>
+    <script src="~/theme/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/theme/js/popper.min.js"></script>
+    <script src="~/theme/js/bootstrap.min.js"></script>
+    <script src="~/theme/js/jquery.easing.1.3.js"></script>
+    <script src="~/theme/js/jquery.waypoints.min.js"></script>
+    <script src="~/theme/js/jquery.stellar.min.js"></script>
+    <script src="~/theme/js/owl.carousel.min.js"></script>
+    <script src="~/theme/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/theme/js/aos.js"></script>
+    <script src="~/theme/js/jquery.animateNumber.min.js"></script>
+    <script src="~/theme/js/bootstrap-datepicker.js"></script>
+    <script src="~/theme/js/jquery.timepicker.min.js"></script>
+    <script src="~/theme/js/scrollax.min.js"></script>
+    <script src="~/theme/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/theme/js/google-map.js"></script>
+    <script src="~/theme/js/main.js"></script>
+    <script src="~/Scripts/myscript.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<bitirme.Entity.usta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Ustalar</h2>
+@if (User.IsInRole("A"))
+{
+    <p>
+        @Html.ActionLink("Usta Ekle", "Create")
+    </p>
+}
+@if (User.IsInRole("T2"))
+{
+    <p>
+        @Html.ActionLink("Usta Ekle", "Create","hesap")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.taseron.ad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.puan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hesap.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taseron.ad)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.ID }) |
+                @if (User.IsInRole("T2"))
+                {
+                    @Html.ActionLink("Ustalarımdan Çıkar", "TUSil", new { id = item.ID })
+                }
+                @if (!User.IsInRole("T2"))
+                {
+                    @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

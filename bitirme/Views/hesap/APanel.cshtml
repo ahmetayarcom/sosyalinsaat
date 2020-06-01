@@ -1,0 +1,104 @@
+﻿@model bitirme.Entity.hesap
+@{
+    ViewBag.Title = "APanel";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="row tac" style="padding-bottom:1%">
+    <div class="container col-md-4" style="margin-top:1%">
+        <div style="text-align:center">
+            <div class="agent" style="width:70%">
+                <div class="img">
+                    <img src="@Model.fotograf" class="img-fluid" alt="Colorlib Template">
+                </div>
+                <div class="desc" style="text-align:left">
+                    <h3><span>@Html.DisplayFor(model => model.mail)</span></h3>
+
+                        <p>
+                            @Html.ActionLink("Profili Düzenle", "Edit", new { id = Model.ID })
+                        </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container col-md-8">
+        <div class="row">
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","hesap")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Hesaplar</span>
+
+                    </div>
+                </a>
+            </div>
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","muteahhit")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Müteahhitler</span>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","taseron")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Taşeronlar</span>
+
+                    </div>
+                </a>
+            </div>
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","usta")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Ustalar</span>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","proje")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Projeler</span>
+
+                    </div>
+                </a>
+            </div>
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","ilans")">
+                    <div class="container buttonumAdmin">
+
+                        <span>İlanlar</span>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        @*<div class="row">
+            <div class=" col-md-6">
+                <a href="@Url.Action("Index","teklif")">
+                    <div class="container buttonumAdmin">
+
+                        <span>Teklifler</span>
+
+                    </div>
+                </a>
+            </div>
+        </div>*@
+    </div>
+
+
+</div>
+

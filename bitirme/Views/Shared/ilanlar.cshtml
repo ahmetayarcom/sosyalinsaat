@@ -1,0 +1,27 @@
+﻿@model IEnumerable<bitirme.Entity.ilan>
+
+@foreach (var item in Model)
+{
+    <div class="container col-md-6">
+        <div class="property-wrap ftco-animate">
+            <div class="img d-flex align-items-center justify-content-center" style="background-image: url(@item.foto);">
+                <a href="@Url.Action("IDetay","ilans",new { id=item.ID})" class="icon d-flex align-items-center justify-content-center btn-custom">
+                    <span class="ion-ios-link"></span>
+                </a>
+                <div class="list-agent d-flex align-items-center">
+                    <a href="@Url.Action("MProfil","muteahhit",new { id=item.proje.muteahhit.ID})" class="agent-info d-flex align-items-center">
+                        <div class="img-2 rounded-circle" style="background-image: url(@item.proje.muteahhit.hesap.fotograf);"></div>
+                        <h3 class="mb-0 ml-2">@Html.DisplayFor(modelItem => item.proje.muteahhit.ad)</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="text">
+                <h3 class="mb-0"><a href="@Url.Action("IDetay","ilans",new { id=item.ID})">@Html.DisplayFor(modelItem => item.ad)</a></h3>
+                <span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>@Html.DisplayFor(modelItem => item.proje.adres)</span>
+                <ul class="property_list">
+                    <li><span class="flaticon-floor-plan"></span>@item.boyut m2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,64 @@
+﻿@model bitirme.Entity.teklif
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Teklif Silinecek, Emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesap.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ilan.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ilan.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usta.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usta.ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

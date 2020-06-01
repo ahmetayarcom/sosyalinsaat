@@ -1,0 +1,72 @@
+﻿@model bitirme.Entity.usta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Usta Silinecek, Emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesap.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taseron.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taseron.ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

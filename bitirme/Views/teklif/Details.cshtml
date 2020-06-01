@@ -1,0 +1,122 @@
+﻿@model bitirme.Entity.teklif
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="row">
+    <div class="container col-md-6" style="text-align:center;margin-top:1%">
+        <h4>Teklif Detayları</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fiyat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fiyat)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.durum)
+            </dt>
+
+            @if (Model.durum == 1)
+            {
+                <dd>
+                    Beklemede
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    Onaylanmış, Devam Ediyor
+                </dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.hesap.mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.hesap.mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ilan.ad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ilan.ad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta.ad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta.ad)
+            </dd>
+
+        </dl>
+
+        <p>
+            @Html.ActionLink("Listeye Dön", "Index")
+        </p>
+    </div>
+    @if (Model.durum == 2)
+    {
+    <div class="container col-md-6" style="text-align:center;margin-top:5%">
+
+        <div class="col-md-12" style="margin-top:5%">
+            <a href="@Url.Action("PP","hesap",new { id=Model.hesap.ID})" class="buttonum3" style="background-color:dimgrey;width:20rem">
+                Profili Görüntüle
+            </a>
+        </div>
+        <div class="col-md-12" style="margin-top:5%">
+            <a href="@Url.Action("MPage","chat",new { id=Model.hesap.ID})" class="buttonum3" style="background-color:dimgrey;width:20rem">
+                Mesaj Yaz
+            </a>
+        </div>
+        <div class="col-md-12" style="margin-top:5%">
+            <a href="@Url.Action("Bitti","teklif",new {id= Model.ID })" class="buttonum3" style="width:20rem">
+                İşin Bittiğini Onayla
+            </a>
+        </div>
+        <div class="col-md-12" style="margin-top:5%">
+            <a href="@Url.Action("Red","teklif",new {id= Model.ID })" class="buttonum3" style="background-color:red;width:20rem">
+                İptal Et
+            </a>
+        </div>
+    </div>
+    }
+    else
+    {
+        <div class="container col-md-6" style="text-align:center;margin-top:5%">
+
+            <div class="col-md-12" style="margin-top:5%">
+                <a href="@Url.Action("PP","hesap",new { id=Model.hesap.ID})" class="buttonum3" style="background-color:dimgrey;width:20rem">
+                    Profili Görüntüle
+                </a>
+            </div>
+            <div class="col-md-12" style="margin-top:5%">
+                <a href="@Url.Action("MPage","chat",new { id=Model.hesap.ID})" class="buttonum3" style="background-color:dimgrey;width:20rem">
+                    Mesaj Yaz
+                </a>
+            </div>
+            <div class="col-md-12" style="margin-top:5%">
+                <a href="@Url.Action("Onay","teklif",new {id= Model.ID })" class="buttonum3" style="width:20rem">
+                    Onayla
+                </a>
+            </div>
+            <div class="col-md-12" style="margin-top:5%">
+                <a href="@Url.Action("Red","teklif",new {id= Model.ID })" class="buttonum3" style="background-color:red;width:20rem">
+                    Red
+                </a>
+            </div>
+        </div>
+    }
+
+</div>

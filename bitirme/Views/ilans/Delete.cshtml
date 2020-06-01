@@ -1,0 +1,96 @@
+﻿@model bitirme.Entity.ilan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>İlan Silinecek, Emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.baslamaTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.baslamaTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitisTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitisTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birimFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birimFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.boyut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.boyut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ilanType.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ilanType.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proje.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proje.ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

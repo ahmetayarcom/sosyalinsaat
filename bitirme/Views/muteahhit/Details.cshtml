@@ -1,0 +1,82 @@
+﻿@model bitirme.Entity.muteahhit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Detaylar</h2>
+<div class="row">
+    <div class="container col-md-8">
+
+
+
+    </div>
+    <div class="container col-md-4">
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.hesap.mail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hesap.mail)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.adres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.adres)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.telno)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telno)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.webadresi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.webadresi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.issayisi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.issayisi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hesap.mail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hesap.mail)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </p>
+    </div>
+</div>

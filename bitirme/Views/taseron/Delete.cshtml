@@ -1,0 +1,96 @@
+﻿@model bitirme.Entity.taseron
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Taşeron Silinecek, Emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.calisanSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calisanSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.webadresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.webadresi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.issayisi1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.issayisi1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesap.mail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

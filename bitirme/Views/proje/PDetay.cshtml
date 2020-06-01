@@ -1,0 +1,118 @@
+﻿@using bitirme.Entity;
+@model Tuple<IEnumerable<bitirme.Entity.ilan>, bitirme.Entity.proje, IEnumerable<bitirme.Entity.ilan>, IEnumerable<bitirme.Entity.ilan>>
+@{
+    ViewBag.Title = "PDetay";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8" style="margin-top:1%">
+        <div class="property-details">
+            <div class="img rounded" style="background-image: url(@Model.Item2.foto);"></div>
+            <div class="text">
+                <h2>@Html.DisplayFor(m => m.Item2.ad)</h2>
+                <span class="subheading">@Html.DisplayFor(m => m.Item2.adres)</span>
+
+                <span class="subheading"> İlan sayısı: @Html.DisplayFor(model => model.Item2.isSayisi)</span>
+
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-4" style="margin-top:1%;">
+        <div style="text-align:center;margin-left:0%">
+            <div class="agent" style="width:70%;margin-left:15%">
+                <a href="@Url.Action("MProfil","muteahhit",new { id = Model.Item2.muteahhit.ID })">
+                    <div class="img">
+                        <img src="@Model.Item2.muteahhit.hesap.fotograf" class="img-fluid" alt="Colorlib Template">
+                    </div>
+                </a>
+                <div class="desc" style="text-align:left">
+                    <h3><span>@Html.DisplayFor(model => model.Item2.muteahhit.ad)</span></h3>
+                    <p class="h-info"><span class="fas fa-envelope"></span> <span class="details">@Html.DisplayFor(model => model.Item2.muteahhit.hesap.mail)</span></p>
+                    <p class="h-info"><span class="fas fa-hammer"></span> <span class="details">@Html.DisplayFor(model => model.Item2.muteahhit.issayisi) ilan</span></p>
+                    <p class="h-info"><span class="fas fa-map-marked-alt"></span> <span class="details">@Html.DisplayFor(model => model.Item2.muteahhit.adres)</span></p>
+                    <p class="h-info"><span class="fas fa-phone-alt"></span> <span class="details">@Html.DisplayFor(model => model.Item2.muteahhit.telno)</span></p>
+                    <p class="h-info"><span class="fab fa-chrome"></span> <span class="details">@Html.DisplayFor(model => model.Item2.muteahhit.webadresi)</span></p>
+                    @if (User.IsInRole("M2"))
+                    {
+                        <hr />
+                        <p>
+                            @Html.ActionLink("Profili Düzenle", "Edit", new { id = Model.Item2.muteahhit.hesapID })
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 pills">
+        <div class="bd-example bd-example-tabs">
+            <div class="d-flex">
+                <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="btnUc" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">İlanlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnBir" data-toggle="pill" href="#pills-description2" role="tab" aria-controls="pills-description" aria-expanded="true">Devam Eden İşler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnIki" data-toggle="pill" href="#pills-description3" role="tab" aria-controls="pills-description" aria-expanded="true">Bitmiş İşler</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="uc" role="tabpanel" aria-labelledby="pills-description-tab">
+                    <div class="row">
+                        @*@foreach (var item in Model.Item1)
+                            {
+                                <div class="container col-md-6">
+                                    <div class="property-wrap ftco-animate">
+                                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/theme/images/work-1.jpg);">
+                                            <a href="properties-single.html" class="icon d-flex align-items-center justify-content-center btn-custom">
+                                                <span class="ion-ios-link"></span>
+                                            </a>
+                                            <div class="list-agent d-flex align-items-center">
+                                                <a href="@Url.Action("MProfil","muteahhit",new { id=item.proje.muteahhit.hesapID})" class="agent-info d-flex align-items-center">
+                                                    <div class="img-2 rounded-circle" style="background-image: url(/theme/images/person_1.jpg);"></div>
+                                                    <h3 class="mb-0 ml-2">@Html.DisplayFor(modelItem => item.proje.muteahhit.ad)</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <p class="price mb-3"><span class="orig-price">$3,500,000.00</span></p>
+                                            <h3 class="mb-0"><a href="properties-single.html">@Html.DisplayFor(modelItem => item.ad)</a></h3>
+                                            <span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>@Html.DisplayFor(modelItem => item.proje.adres)</span>
+                                            <ul class="property_list">
+                                                <li><span class="flaticon-bed"></span>3</li>
+                                                <li><span class="flaticon-bathtub"></span>2</li>
+                                                <li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }*@
+                        @Html.Partial("ilanlar", Model.Item1)
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade show active" id="bir" role="tabpanel" aria-labelledby="pills-description-tab" style="display:none">
+                    <div class="row">
+                        
+                        @Html.Partial("ilanlar", Model.Item3)
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show active" id="iki" role="tabpanel" aria-labelledby="pills-description-tab" style="display:none">
+                    <div class="row">
+                       
+                        @Html.Partial("ilanlar", Model.Item4)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

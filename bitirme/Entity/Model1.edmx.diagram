@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc5d1b489dc84de3a41fd2138cdb582b" Name="Diagram1" ZoomLevel="68">
+        <EntityTypeShape EntityType="webinsaatModel.hesap" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.hesapType" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.ilanType" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.muteahhit" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.proje" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.sysdiagrams" Width="1.5" PointX="10" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.taseron" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.usta" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.yonetici" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="webinsaatModel.yorum" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="webinsaatModel.FK_hesap_hesapType1" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_muteahhit_hesap" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_taseron_hesap" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_usta_hesap" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_yonetici_hesap" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_yorum_hesap" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_proje_muteahhit" ManuallyRouted="false" />
+        <AssociationConnector Association="webinsaatModel.FK_usta_taseron" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="webinsaatModel.teklif" Width="1.5" PointX="12" PointY="9.375" />
+        <AssociationConnector Association="webinsaatModel.FK_teklif_hesap" />
+        <AssociationConnector Association="webinsaatModel.FK_teklif_usta" />
+        <EntityTypeShape EntityType="webinsaatModel.ilan" Width="1.5" PointX="9.75" PointY="4.25" />
+        <AssociationConnector Association="webinsaatModel.FK_ilan_ilanType" />
+        <AssociationConnector Association="webinsaatModel.FK_ilan_proje" />
+        <AssociationConnector Association="webinsaatModel.FK_teklif_is" />
+        <EntityTypeShape EntityType="webinsaatModel.chat" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="webinsaatModel.mesaj" Width="1.5" PointX="1.5" PointY="1.25" />
+        <AssociationConnector Association="webinsaatModel.FK_chat_ahesap" />
+        <AssociationConnector Association="webinsaatModel.FK_chat_ghesap" />
+        <AssociationConnector Association="webinsaatModel.FK_mesaj_chat" />
+        <AssociationConnector Association="webinsaatModel.FK_mesaj_hesap" />
+        <AssociationConnector Association="webinsaatModel.FK_mesaj_hesap1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

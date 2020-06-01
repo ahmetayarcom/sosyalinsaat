@@ -1,0 +1,144 @@
+﻿@*@model IEnumerable<bitirme.Entity.ilan>*@
+@using bitirme.Entity;
+@model Tuple<IEnumerable<bitirme.Entity.ilan>, bitirme.Entity.muteahhit, IEnumerable<bitirme.Entity.proje>>
+@{
+    ViewBag.Title = "MProfil";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@*<h2>Profil</h2>*@
+<div class="row">
+
+    <div class="container col-md-4" style="margin-top:1%">
+        <div style="text-align:center">
+            <div class="agent" style="width:70%">
+                <div class="img">
+                    <img src="@Model.Item2.hesap.fotograf" class="img-fluid" alt="Colorlib Template">
+                </div>
+                <div class="desc" style="text-align:left">
+                    <h3><span>@Html.DisplayFor(model => model.Item2.ad)</span></h3>
+                    <p class="h-info"><span class="fas fa-envelope"></span> <span class="details">@Html.DisplayFor(model => model.Item2.hesap.mail)</span></p>
+                    <p class="h-info"><span class="fas fa-hammer"></span> <span class="details">@Html.DisplayFor(model => model.Item2.issayisi) ilan</span></p>
+                    <p class="h-info"><span class="fas fa-map-marked-alt"></span> <span class="details">@Html.DisplayFor(model => model.Item2.adres)</span></p>
+                    <p class="h-info"><span class="fas fa-phone-alt"></span> <span class="details">@Html.DisplayFor(model => model.Item2.telno)</span></p>
+                    <p class="h-info"><span class="fab fa-chrome"></span> <span class="details">@Html.DisplayFor(model => model.Item2.webadresi)</span></p>
+                    @if (User.IsInRole("M2"))
+                    {
+                        <hr />
+                        <p>
+                            @Html.ActionLink("Profili Düzenle", "Edit", new { id = Model.Item2.ID })
+                        </p>
+                    }
+                    @if (User.Identity.Name != Model.Item2.hesap.mail)
+                    {
+                        <a href="@Url.Action("MPage", "chat", new { id = ViewBag.mhesapID })" class="buttonum3">Mesaj Gönder</a>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container col-md-8" style="margin-top:1%">
+        <div class="row" style="margin-bottom:1%">
+            <div class="col-md-6">
+                <button id="btnBir" class="buttonum1">Projeler</button>
+                <button id="btnIki" class="buttonum2">İlanlar</button>
+                <a id="btnUc" class=""></a>
+            </div>
+            @if (User.IsInRole("M2"))
+            {
+                <div class="col-md-6" style="text-align:center">
+                    <a href="@Url.Action("Index","proje")" class="buttonum3">Proje İşlemleri</a>
+                    <a href="@Url.Action("Index","ilans")" class="buttonum3">İlan işlemleri</a>
+                    <a href="@Url.Action("Edit","muteahhit",new { id = Model.Item2.ID })" class="buttonum3">Profili Düzenle</a>
+                </div>
+            }
+        </div>
+
+
+        <div id="iki" class="row">
+            @foreach (var item in Model.Item1)
+            {
+                <div class="container col-md-6">
+                    <div class="property-wrap ftco-animate">
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(@item.foto);">
+                            <a href="@Url.Action("IDetay","ilans",new { id=item.ID})" class="icon d-flex align-items-center justify-content-center btn-custom">
+                                <span class="ion-ios-link"></span>
+                            </a>
+                            <div class="list-agent d-flex align-items-center">
+                                <a href="@Url.Action("MProfil","muteahhit",new { id=item.proje.muteahhit.hesapID})" class="agent-info d-flex align-items-center">
+                                    <div class="img-2 rounded-circle" style="background-image: url(@item.proje.muteahhit.hesap.fotograf);"></div>
+                                    <h3 class="mb-0 ml-2">@Html.DisplayFor(modelItem => item.proje.muteahhit.ad)</h3>
+                                </a>
+                                @*<div class="tooltip-wrap d-flex">
+                                        <a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Bookmark">
+                                            <span class="ion-ios-heart"><i class="sr-only">@Html.DisplayNameFor(model => model.proje.muteahhit)</i></span>
+                                        </a>
+                                        <a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Compare">
+                                            <span class="ion-ios-eye"><i class="sr-only">Compare</i></span>
+                                        </a>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="mb-0"><a href="@Url.Action("IDetay","ilans",new { id=item.ID})">@Html.DisplayFor(modelItem => item.ad)</a></h3>
+                            <span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>@Html.DisplayFor(modelItem => item.proje.adres)</span>
+                            <ul class="property_list">
+                                <li><span class="flaticon-floor-plan"></span>@item.boyut m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+        <div id="bir" class="row" style="display:none">
+            @foreach (var item in Model.Item3)
+            {
+                <div class="container col-md-6">
+                    <div class="property-wrap ftco-animate">
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(@item.foto);">
+                            <a href="@Url.Action("PDetay","proje",new { id=item.ID})" class="icon d-flex align-items-center justify-content-center btn-custom">
+                                <span class="ion-ios-link"></span>
+                            </a>
+                            <div class="list-agent d-flex align-items-center">
+                                <a href="@Url.Action("MProfil","muteahhit",new { id=item.muteahhit.hesapID})" class="agent-info d-flex align-items-center">
+                                    <div class="img-2 rounded-circle" style="background-image: url(@item.muteahhit.hesap.fotograf);"></div>
+                                    <h3 class="mb-0 ml-2">@Html.DisplayFor(modelItem => item.muteahhit.ad)</h3>
+                                </a>
+                                @*<div class="tooltip-wrap d-flex">
+                                        <a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Bookmark">
+                                            <span class="ion-ios-heart"><i class="sr-only">@Html.DisplayNameFor(model => model.proje.muteahhit)</i></span>
+                                        </a>
+                                        <a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Compare">
+                                            <span class="ion-ios-eye"><i class="sr-only">Compare</i></span>
+                                        </a>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="mb-0"><a href="@Url.Action("PDetay","proje",new { id=item.ID})">@Html.DisplayFor(modelItem => item.ad)</a></h3>
+                            <span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>@Html.DisplayFor(modelItem => item.adres)</span>
+                            <ul class="property_list">
+                                <li><span class="flaticon-floor-plan"></span>@item.isSayisi tane ilan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+    @*@{var model2 = Model.FirstOrDefault();}*@
+
+
+</div>
+

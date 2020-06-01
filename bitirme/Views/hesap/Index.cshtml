@@ -1,0 +1,68 @@
+﻿@model IEnumerable<bitirme.Entity.hesap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hesaplar</title>
+</head>
+<body>
+    <h2>Hesaplar</h2>
+    <p>
+        @Html.ActionLink("Yeni Ekle", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sifre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fotograf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hesapType.type)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sifre)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.fotograf)*@
+                fotoğraf
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hesapType.type)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Detay", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

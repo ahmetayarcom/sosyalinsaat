@@ -1,0 +1,68 @@
+﻿@model bitirme.Entity.hesap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detaylar</title>
+</head>
+<body>
+    <div>
+        <h4>Hesap</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sifre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sifre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fotograf)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fotograf)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rol)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rol)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.hesapType.type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.hesapType.type)
+            </dd>
+
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Listeye Dön", "Index")
+    </p>
+</body>
+</html>

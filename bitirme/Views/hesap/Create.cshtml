@@ -1,0 +1,64 @@
+﻿@model bitirme.Entity.hesap
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="limiter" style="margin-top:5%">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+
+            @using (Html.BeginForm("Create", "hesap", FormMethod.Post, new { @class = "login100-form validate-form p-l-55 p-r-55 p-t-178" }))
+            {
+                @Html.AntiForgeryToken()
+                <span class="login100-form-title">
+                    Kayıt Ol
+                </span>
+
+                <div style="color:black;margin-bottom:4%;text-align:center">
+                    @ViewBag.Mesaj
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    @Html.TextBoxFor(m => m.mail, htmlAttributes: new { @class = "form-control", placeholder = "e-mail" })
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                    @Html.PasswordFor(m => m.sifre, htmlAttributes: new { @class = "form-control", placeholder = "şifre", @style = "margin-top:10px" })
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="fotograf">
+                    @Html.TextBoxFor(m => m.fotograf, htmlAttributes: new { @class = "form-control", placeholder = "fotograf", @style = "margin-top:10px" })
+                    <span class="focus-input100"></span>
+                </div>
+
+                if (!User.IsInRole("T2"))
+                {
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.typeID, "typeID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                        <span style="color:grey;font-size:18px;margin-left:1%">Hesap Türü</span>
+                        @Html.DropDownList("typeID", null, htmlAttributes: new { @class = "form-control dropicin" })
+                        @Html.ValidationMessageFor(model => model.typeID, "", new { @class = "text-danger" })
+
+                    </div>
+                }
+                else if (User.IsInRole("T2"))
+                {
+                    @Html.HiddenFor(model => model.typeID)
+                }
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn" style="margin-top:4%;margin-bottom:4%">Kaydet</button>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</div>
+

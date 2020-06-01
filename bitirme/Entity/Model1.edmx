@@ -1,0 +1,1143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="webinsaatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taraf1ID" Type="int" Nullable="false" />
+          <Property Name="taraf2ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hesap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="typeID" Type="int" Nullable="false" />
+          <Property Name="rol" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hesapType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ilan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="baslamaTarih" Type="date" Nullable="false" />
+          <Property Name="bitisTarih" Type="date" Nullable="false" />
+          <Property Name="birimFiyat" Type="float" />
+          <Property Name="boyut" Type="float" Nullable="false" />
+          <Property Name="durum" Type="int" Nullable="false" />
+          <Property Name="projeID" Type="int" Nullable="false" />
+          <Property Name="typeID" Type="int" Nullable="false" />
+          <Property Name="foto" Type="nvarchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ilanType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="sendTime" Type="datetime" Nullable="false" />
+          <Property Name="chatID" Type="int" Nullable="false" />
+          <Property Name="gonderenID" Type="int" Nullable="false" />
+          <Property Name="alanID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="muteahhit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesapID" Type="int" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telno" Type="int" />
+          <Property Name="webadresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="issayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="proje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="miteahhitID" Type="int" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="isSayisi" Type="int" />
+          <Property Name="foto" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="taseron">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesapID" Type="int" Nullable="false" />
+          <Property Name="calisanSayisi" Type="int" Nullable="false" />
+          <Property Name="isSayisi" Type="int" />
+          <Property Name="puan" Type="int" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telno" Type="int" />
+          <Property Name="webadresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="issayisi1" Type="int" />
+        </EntityType>
+        <EntityType Name="teklif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesapID" Type="int" Nullable="false" />
+          <Property Name="fiyat" Type="float" Nullable="false" />
+          <Property Name="ilanID" Type="int" Nullable="false" />
+          <Property Name="durum" Type="int" Nullable="false" />
+          <Property Name="ekipID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesapID" Type="int" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="taseronID" Type="int" Nullable="false" />
+          <Property Name="isSayisi" Type="int" />
+          <Property Name="puan" Type="int" />
+        </EntityType>
+        <EntityType Name="yonetici">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesaplD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="yorum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hesapID" Type="int" Nullable="false" />
+          <Property Name="yorum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="puan" Type="int" Nullable="false" />
+          <Property Name="sahipID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_chat_ahesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="taraf2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_ghesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="taraf1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hesap_hesapType1">
+          <End Role="hesapType" Type="Self.hesapType" Multiplicity="1" />
+          <End Role="hesap" Type="Self.hesap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesapType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="hesap">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilan_ilanType">
+          <End Role="ilanType" Type="Self.ilanType" Multiplicity="1" />
+          <End Role="ilan" Type="Self.ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilanType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ilan">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilan_proje">
+          <End Role="proje" Type="Self.proje" Multiplicity="1" />
+          <End Role="ilan" Type="Self.ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ilan">
+              <PropertyRef Name="projeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_chat">
+          <End Role="chat" Type="Self.chat" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="chatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="gonderenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_hesap1">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="alanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muteahhit_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="muteahhit" Type="Self.muteahhit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="muteahhit">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proje_muteahhit">
+          <End Role="muteahhit" Type="Self.muteahhit" Multiplicity="1" />
+          <End Role="proje" Type="Self.proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="muteahhit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="proje">
+              <PropertyRef Name="miteahhitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_taseron_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="taseron" Type="Self.taseron" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="taseron">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="teklif" Type="Self.teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_is">
+          <End Role="ilan" Type="Self.ilan" Multiplicity="1" />
+          <End Role="teklif" Type="Self.teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="ilanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_usta">
+          <End Role="usta" Type="Self.usta" Multiplicity="1" />
+          <End Role="teklif" Type="Self.teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="ekipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usta_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="usta" Type="Self.usta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="usta">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usta_taseron">
+          <End Role="taseron" Type="Self.taseron" Multiplicity="1" />
+          <End Role="usta" Type="Self.usta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taseron">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="usta">
+              <PropertyRef Name="taseronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yonetici_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="yonetici" Type="Self.yonetici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="yonetici">
+              <PropertyRef Name="hesaplD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yorum_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="yorum">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="webinsaatModelStoreContainer">
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hesap" EntityType="Self.hesap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hesapType" EntityType="Self.hesapType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilan" EntityType="Self.ilan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilanType" EntityType="Self.ilanType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mesaj" EntityType="Self.mesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="muteahhit" EntityType="Self.muteahhit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proje" EntityType="Self.proje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taseron" EntityType="Self.taseron" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teklif" EntityType="Self.teklif" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usta" EntityType="Self.usta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yonetici" EntityType="Self.yonetici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yorum" EntityType="Self.yorum" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_chat_ahesap" Association="Self.FK_chat_ahesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_ghesap" Association="Self.FK_chat_ghesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hesap_hesapType1" Association="Self.FK_hesap_hesapType1">
+            <End Role="hesapType" EntitySet="hesapType" />
+            <End Role="hesap" EntitySet="hesap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilan_ilanType" Association="Self.FK_ilan_ilanType">
+            <End Role="ilanType" EntitySet="ilanType" />
+            <End Role="ilan" EntitySet="ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilan_proje" Association="Self.FK_ilan_proje">
+            <End Role="proje" EntitySet="proje" />
+            <End Role="ilan" EntitySet="ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_chat" Association="Self.FK_mesaj_chat">
+            <End Role="chat" EntitySet="chat" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_hesap" Association="Self.FK_mesaj_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_hesap1" Association="Self.FK_mesaj_hesap1">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muteahhit_hesap" Association="Self.FK_muteahhit_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="muteahhit" EntitySet="muteahhit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proje_muteahhit" Association="Self.FK_proje_muteahhit">
+            <End Role="muteahhit" EntitySet="muteahhit" />
+            <End Role="proje" EntitySet="proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_taseron_hesap" Association="Self.FK_taseron_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="taseron" EntitySet="taseron" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_hesap" Association="Self.FK_teklif_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_is" Association="Self.FK_teklif_is">
+            <End Role="ilan" EntitySet="ilan" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_usta" Association="Self.FK_teklif_usta">
+            <End Role="usta" EntitySet="usta" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usta_hesap" Association="Self.FK_usta_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="usta" EntitySet="usta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usta_taseron" Association="Self.FK_usta_taseron">
+            <End Role="taseron" EntitySet="taseron" />
+            <End Role="usta" EntitySet="usta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yonetici_hesap" Association="Self.FK_yonetici_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="yonetici" EntitySet="yonetici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yorum_hesap" Association="Self.FK_yorum_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="yorum" EntitySet="yorum" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="webinsaatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hesap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fotograf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="typeID" Type="Int32" Nullable="false" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="hesapType" Relationship="Self.FK_hesap_hesapType1" FromRole="hesap" ToRole="hesapType" />
+          <NavigationProperty Name="muteahhit" Relationship="Self.FK_muteahhit_hesap" FromRole="hesap" ToRole="muteahhit" />
+          <NavigationProperty Name="taseron" Relationship="Self.FK_taseron_hesap" FromRole="hesap" ToRole="taseron" />
+          <NavigationProperty Name="usta" Relationship="Self.FK_usta_hesap" FromRole="hesap" ToRole="usta" />
+          <NavigationProperty Name="yonetici" Relationship="Self.FK_yonetici_hesap" FromRole="hesap" ToRole="yonetici" />
+          <NavigationProperty Name="yorum" Relationship="Self.FK_yorum_hesap" FromRole="hesap" ToRole="yorum" />
+          <NavigationProperty Name="teklif" Relationship="webinsaatModel.FK_teklif_hesap" FromRole="hesap" ToRole="teklif" />
+          <NavigationProperty Name="chat" Relationship="webinsaatModel.FK_chat_ahesap" FromRole="hesap" ToRole="chat" />
+          <NavigationProperty Name="chat1" Relationship="webinsaatModel.FK_chat_ghesap" FromRole="hesap" ToRole="chat" />
+          <NavigationProperty Name="mesaj" Relationship="webinsaatModel.FK_mesaj_hesap" FromRole="hesap" ToRole="mesaj" />
+          <NavigationProperty Name="mesaj1" Relationship="webinsaatModel.FK_mesaj_hesap1" FromRole="hesap" ToRole="mesaj" />
+          </EntityType>
+        <EntityType Name="hesapType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_hesap_hesapType1" FromRole="hesapType" ToRole="hesap" />
+        </EntityType>
+        <EntityType Name="ilanType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ilan" Relationship="webinsaatModel.FK_ilan_ilanType" FromRole="ilanType" ToRole="ilan" />
+        </EntityType>
+        <EntityType Name="muteahhit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesapID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telno" Type="Int32" />
+          <Property Name="webadresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="issayisi" Type="Int32" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_muteahhit_hesap" FromRole="muteahhit" ToRole="hesap" />
+          <NavigationProperty Name="proje" Relationship="Self.FK_proje_muteahhit" FromRole="muteahhit" ToRole="proje" />
+        </EntityType>
+        <EntityType Name="proje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="miteahhitID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isSayisi" Type="Int32" />
+          <NavigationProperty Name="muteahhit" Relationship="Self.FK_proje_muteahhit" FromRole="proje" ToRole="muteahhit" />
+          <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ilan" Relationship="webinsaatModel.FK_ilan_proje" FromRole="proje" ToRole="ilan" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="taseron">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesapID" Type="Int32" Nullable="false" />
+          <Property Name="calisanSayisi" Type="Int32" Nullable="false" />
+          <Property Name="isSayisi" Type="Int32" />
+          <Property Name="puan" Type="Int32" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telno" Type="Int32" />
+          <Property Name="webadresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="issayisi1" Type="Int32" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_taseron_hesap" FromRole="taseron" ToRole="hesap" />
+          <NavigationProperty Name="usta" Relationship="Self.FK_usta_taseron" FromRole="taseron" ToRole="usta" />
+        </EntityType>
+        <EntityType Name="usta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesapID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="taseronID" Type="Int32" Nullable="false" />
+          <Property Name="isSayisi" Type="Int32" />
+          <Property Name="puan" Type="Int32" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_usta_hesap" FromRole="usta" ToRole="hesap" />
+          <NavigationProperty Name="taseron" Relationship="Self.FK_usta_taseron" FromRole="usta" ToRole="taseron" />
+          <NavigationProperty Name="teklif" Relationship="webinsaatModel.FK_teklif_usta" FromRole="usta" ToRole="teklif" />
+        </EntityType>
+        <EntityType Name="yonetici">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesaplD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_yonetici_hesap" FromRole="yonetici" ToRole="hesap" />
+        </EntityType>
+        <EntityType Name="yorum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesapID" Type="Int32" Nullable="false" />
+          <Property Name="yorum1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="puan" Type="Int32" Nullable="false" />
+          <Property Name="sahipID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hesap" Relationship="Self.FK_yorum_hesap" FromRole="yorum" ToRole="hesap" />
+        </EntityType>
+        <Association Name="FK_hesap_hesapType1">
+          <End Role="hesapType" Type="Self.hesapType" Multiplicity="1" />
+          <End Role="hesap" Type="Self.hesap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesapType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="hesap">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muteahhit_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="muteahhit" Type="Self.muteahhit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="muteahhit">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_taseron_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="taseron" Type="Self.taseron" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="taseron">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usta_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="usta" Type="Self.usta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="usta">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yonetici_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="yonetici" Type="Self.yonetici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="yonetici">
+              <PropertyRef Name="hesaplD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yorum_hesap">
+          <End Role="hesap" Type="Self.hesap" Multiplicity="1" />
+          <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="yorum">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proje_muteahhit">
+          <End Role="muteahhit" Type="Self.muteahhit" Multiplicity="1" />
+          <End Role="proje" Type="Self.proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="muteahhit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="proje">
+              <PropertyRef Name="miteahhitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usta_taseron">
+          <End Role="taseron" Type="Self.taseron" Multiplicity="1" />
+          <End Role="usta" Type="Self.usta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taseron">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="usta">
+              <PropertyRef Name="taseronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="webinsaatEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hesap" EntityType="Self.hesap" />
+          <EntitySet Name="hesapType" EntityType="Self.hesapType" />
+          <EntitySet Name="ilanType" EntityType="Self.ilanType" />
+          <EntitySet Name="muteahhit" EntityType="Self.muteahhit" />
+          <EntitySet Name="proje" EntityType="Self.proje" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="taseron" EntityType="Self.taseron" />
+          <EntitySet Name="usta" EntityType="Self.usta" />
+          <EntitySet Name="yonetici" EntityType="Self.yonetici" />
+          <EntitySet Name="yorum" EntityType="Self.yorum" />
+          <AssociationSet Name="FK_hesap_hesapType1" Association="Self.FK_hesap_hesapType1">
+            <End Role="hesapType" EntitySet="hesapType" />
+            <End Role="hesap" EntitySet="hesap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muteahhit_hesap" Association="Self.FK_muteahhit_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="muteahhit" EntitySet="muteahhit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_taseron_hesap" Association="Self.FK_taseron_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="taseron" EntitySet="taseron" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usta_hesap" Association="Self.FK_usta_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="usta" EntitySet="usta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yonetici_hesap" Association="Self.FK_yonetici_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="yonetici" EntitySet="yonetici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yorum_hesap" Association="Self.FK_yorum_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="yorum" EntitySet="yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proje_muteahhit" Association="Self.FK_proje_muteahhit">
+            <End Role="muteahhit" EntitySet="muteahhit" />
+            <End Role="proje" EntitySet="proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usta_taseron" Association="Self.FK_usta_taseron">
+            <End Role="taseron" EntitySet="taseron" />
+            <End Role="usta" EntitySet="usta" />
+          </AssociationSet>
+          <EntitySet Name="teklif" EntityType="webinsaatModel.teklif" />
+          <AssociationSet Name="FK_teklif_hesap" Association="webinsaatModel.FK_teklif_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_usta" Association="webinsaatModel.FK_teklif_usta">
+            <End Role="usta" EntitySet="usta" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <EntitySet Name="ilan" EntityType="webinsaatModel.ilan" />
+          <AssociationSet Name="FK_ilan_ilanType" Association="webinsaatModel.FK_ilan_ilanType">
+            <End Role="ilanType" EntitySet="ilanType" />
+            <End Role="ilan" EntitySet="ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilan_proje" Association="webinsaatModel.FK_ilan_proje">
+            <End Role="proje" EntitySet="proje" />
+            <End Role="ilan" EntitySet="ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_is" Association="webinsaatModel.FK_teklif_is">
+            <End Role="ilan" EntitySet="ilan" />
+            <End Role="teklif" EntitySet="teklif" />
+          </AssociationSet>
+          <EntitySet Name="chat" EntityType="webinsaatModel.chat" />
+          <EntitySet Name="mesaj" EntityType="webinsaatModel.mesaj" />
+          <AssociationSet Name="FK_chat_ahesap" Association="webinsaatModel.FK_chat_ahesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_ghesap" Association="webinsaatModel.FK_chat_ghesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_chat" Association="webinsaatModel.FK_mesaj_chat">
+            <End Role="chat" EntitySet="chat" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_hesap" Association="webinsaatModel.FK_mesaj_hesap">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_hesap1" Association="webinsaatModel.FK_mesaj_hesap1">
+            <End Role="hesap" EntitySet="hesap" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="teklif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hesapID" Type="Int32" Nullable="false" />
+          <Property Name="fiyat" Type="Double" Nullable="false" />
+          <Property Name="ilanID" Type="Int32" Nullable="false" />
+          <Property Name="durum" Type="Int32" Nullable="false" />
+          <Property Name="ekipID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hesap" Relationship="webinsaatModel.FK_teklif_hesap" FromRole="teklif" ToRole="hesap" />
+          <NavigationProperty Name="usta" Relationship="webinsaatModel.FK_teklif_usta" FromRole="teklif" ToRole="usta" />
+          <NavigationProperty Name="ilan" Relationship="webinsaatModel.FK_teklif_is" FromRole="teklif" ToRole="ilan" />
+        </EntityType>
+        <Association Name="FK_teklif_hesap">
+          <End Type="webinsaatModel.hesap" Role="hesap" Multiplicity="1" />
+          <End Type="webinsaatModel.teklif" Role="teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="hesapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_usta">
+          <End Type="webinsaatModel.usta" Role="usta" Multiplicity="1" />
+          <End Type="webinsaatModel.teklif" Role="teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="ekipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ilan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="baslamaTarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bitisTarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="birimFiyat" Type="Double" />
+          <Property Name="boyut" Type="Double" Nullable="false" />
+          <Property Name="durum" Type="Int32" Nullable="false" />
+          <Property Name="projeID" Type="Int32" Nullable="false" />
+          <Property Name="typeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ilanType" Relationship="webinsaatModel.FK_ilan_ilanType" FromRole="ilan" ToRole="ilanType" />
+          <NavigationProperty Name="proje" Relationship="webinsaatModel.FK_ilan_proje" FromRole="ilan" ToRole="proje" />
+          <NavigationProperty Name="teklif" Relationship="webinsaatModel.FK_teklif_is" FromRole="ilan" ToRole="teklif" />
+          <Property Name="foto" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ilan_ilanType">
+          <End Type="webinsaatModel.ilanType" Role="ilanType" Multiplicity="1" />
+          <End Type="webinsaatModel.ilan" Role="ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilanType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ilan">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilan_proje">
+          <End Type="webinsaatModel.proje" Role="proje" Multiplicity="1" />
+          <End Type="webinsaatModel.ilan" Role="ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ilan">
+              <PropertyRef Name="projeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_is">
+          <End Type="webinsaatModel.ilan" Role="ilan" Multiplicity="1" />
+          <End Type="webinsaatModel.teklif" Role="teklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teklif">
+              <PropertyRef Name="ilanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taraf1ID" Type="Int32" Nullable="false" />
+          <Property Name="taraf2ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hesap" Relationship="webinsaatModel.FK_chat_ahesap" FromRole="chat" ToRole="hesap" />
+          <NavigationProperty Name="hesap1" Relationship="webinsaatModel.FK_chat_ghesap" FromRole="chat" ToRole="hesap" />
+          <NavigationProperty Name="mesaj" Relationship="webinsaatModel.FK_mesaj_chat" FromRole="chat" ToRole="mesaj" />
+        </EntityType>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="sendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="chatID" Type="Int32" Nullable="false" />
+          <Property Name="gonderenID" Type="Int32" Nullable="false" />
+          <Property Name="alanID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="chat" Relationship="webinsaatModel.FK_mesaj_chat" FromRole="mesaj" ToRole="chat" />
+          <NavigationProperty Name="hesap" Relationship="webinsaatModel.FK_mesaj_hesap" FromRole="mesaj" ToRole="hesap" />
+          <NavigationProperty Name="hesap1" Relationship="webinsaatModel.FK_mesaj_hesap1" FromRole="mesaj" ToRole="hesap" />
+        </EntityType>
+        <Association Name="FK_chat_ahesap">
+          <End Type="webinsaatModel.hesap" Role="hesap" Multiplicity="1" />
+          <End Type="webinsaatModel.chat" Role="chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="taraf2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_ghesap">
+          <End Type="webinsaatModel.hesap" Role="hesap" Multiplicity="1" />
+          <End Type="webinsaatModel.chat" Role="chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="taraf1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_chat">
+          <End Type="webinsaatModel.chat" Role="chat" Multiplicity="1" />
+          <End Type="webinsaatModel.mesaj" Role="mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="chatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_hesap">
+          <End Type="webinsaatModel.hesap" Role="hesap" Multiplicity="1" />
+          <End Type="webinsaatModel.mesaj" Role="mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="gonderenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_hesap1">
+          <End Type="webinsaatModel.hesap" Role="hesap" Multiplicity="1" />
+          <End Type="webinsaatModel.mesaj" Role="mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hesap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="alanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="webinsaatModelStoreContainer" CdmEntityContainer="webinsaatEntities">
+          <EntitySetMapping Name="hesap">
+            <EntityTypeMapping TypeName="webinsaatModel.hesap">
+              <MappingFragment StoreEntitySet="hesap">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hesapType">
+            <EntityTypeMapping TypeName="webinsaatModel.hesapType">
+              <MappingFragment StoreEntitySet="hesapType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilanType">
+            <EntityTypeMapping TypeName="webinsaatModel.ilanType">
+              <MappingFragment StoreEntitySet="ilanType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="muteahhit">
+            <EntityTypeMapping TypeName="webinsaatModel.muteahhit">
+              <MappingFragment StoreEntitySet="muteahhit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hesapID" ColumnName="hesapID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="telno" ColumnName="telno" />
+                <ScalarProperty Name="webadresi" ColumnName="webadresi" />
+                <ScalarProperty Name="issayisi" ColumnName="issayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proje">
+            <EntityTypeMapping TypeName="webinsaatModel.proje">
+              <MappingFragment StoreEntitySet="proje">
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="miteahhitID" ColumnName="miteahhitID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="isSayisi" ColumnName="isSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="webinsaatModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taseron">
+            <EntityTypeMapping TypeName="webinsaatModel.taseron">
+              <MappingFragment StoreEntitySet="taseron">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hesapID" ColumnName="hesapID" />
+                <ScalarProperty Name="calisanSayisi" ColumnName="calisanSayisi" />
+                <ScalarProperty Name="isSayisi" ColumnName="isSayisi" />
+                <ScalarProperty Name="puan" ColumnName="puan" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="telno" ColumnName="telno" />
+                <ScalarProperty Name="webadresi" ColumnName="webadresi" />
+                <ScalarProperty Name="issayisi1" ColumnName="issayisi1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usta">
+            <EntityTypeMapping TypeName="webinsaatModel.usta">
+              <MappingFragment StoreEntitySet="usta">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hesapID" ColumnName="hesapID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="taseronID" ColumnName="taseronID" />
+                <ScalarProperty Name="isSayisi" ColumnName="isSayisi" />
+                <ScalarProperty Name="puan" ColumnName="puan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yonetici">
+            <EntityTypeMapping TypeName="webinsaatModel.yonetici">
+              <MappingFragment StoreEntitySet="yonetici">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hesaplD" ColumnName="hesaplD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yorum">
+            <EntityTypeMapping TypeName="webinsaatModel.yorum">
+              <MappingFragment StoreEntitySet="yorum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hesapID" ColumnName="hesapID" />
+                <ScalarProperty Name="yorum1" ColumnName="yorum" />
+                <ScalarProperty Name="puan" ColumnName="puan" />
+                <ScalarProperty Name="sahipID" ColumnName="sahipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teklif">
+            <EntityTypeMapping TypeName="webinsaatModel.teklif">
+              <MappingFragment StoreEntitySet="teklif">
+                <ScalarProperty Name="ekipID" ColumnName="ekipID" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ilanID" ColumnName="ilanID" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="hesapID" ColumnName="hesapID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilan">
+            <EntityTypeMapping TypeName="webinsaatModel.ilan">
+              <MappingFragment StoreEntitySet="ilan">
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="projeID" ColumnName="projeID" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="boyut" ColumnName="boyut" />
+                <ScalarProperty Name="birimFiyat" ColumnName="birimFiyat" />
+                <ScalarProperty Name="bitisTarih" ColumnName="bitisTarih" />
+                <ScalarProperty Name="baslamaTarih" ColumnName="baslamaTarih" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat">
+            <EntityTypeMapping TypeName="webinsaatModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="taraf2ID" ColumnName="taraf2ID" />
+                <ScalarProperty Name="taraf1ID" ColumnName="taraf1ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mesaj">
+            <EntityTypeMapping TypeName="webinsaatModel.mesaj">
+              <MappingFragment StoreEntitySet="mesaj">
+                <ScalarProperty Name="alanID" ColumnName="alanID" />
+                <ScalarProperty Name="gonderenID" ColumnName="gonderenID" />
+                <ScalarProperty Name="chatID" ColumnName="chatID" />
+                <ScalarProperty Name="sendTime" ColumnName="sendTime" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

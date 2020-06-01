@@ -1,0 +1,88 @@
+﻿@model IEnumerable<bitirme.Entity.ilan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>İlanlar</h2>
+
+@if (!User.IsInRole("A"))
+{
+    <p>
+        @Html.ActionLink("Yeni İlan", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.baslamaTarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bitisTarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birimFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.boyut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.durum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ilanType.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proje.ad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.foto)*@
+                fotoğraf
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.baslamaTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bitisTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.birimFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.boyut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.durum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ilanType.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.proje.ad)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

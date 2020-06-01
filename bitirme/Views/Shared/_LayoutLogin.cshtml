@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sosyal İnşaatım</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/theme/login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/theme/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/login/css/main.css">
+    <link rel="stylesheet" href="~/theme/css/style.css">
+    <link rel="stylesheet" href="~/theme/css/style2.css">
+    <link rel="stylesheet" href="~/theme/css/kendi.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Sosyal İnşaatım</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Hakkimizda", "Home")" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Ilan", "Home")" class="nav-link">İlanlar</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hizmet Verenler
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68;">
+                            <a class="dropdown-item" href="@Url.Action("Taseronlar", "Home")">Firmalar</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Ustalar", "Home")">Ustalar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="@Url.Action("Iletisim", "Home")" class="nav-link">İletişim</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown" style="background-color:rgb(249,249,249);border-radius:10px">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hesabım
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68">
+                                <a class="dropdown-item" href="@Url.Action("PP", "hesap")">Profil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("MPage", "Chat")">Mesajlar</a>
+                                @if (!User.IsInRole("A"))
+                                {
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "teklif")">Teklifler</a>
+
+                                }
+                                @if (User.IsInRole("A"))
+                                {
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("APanel", "hesap")">Panel</a>
+                                }
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Security")">Çıkış</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="btn btn-primary py-3 px-4 nav-link" style="margin-right:5px;" href="@Url.Action("Login", "Security")">Giriş</a></li>
+                        <li class="nav-item"><a style="" href="@Url.Action("Create", "hesap")" class="btn btn-primary py-3 px-4 nav-link">Kayıt Ol</a></li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    @RenderBody();
+
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/theme/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/theme/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/theme/login/js/main.js"></script>
+    <script src="~/Scripts/myscript.js"></script>
+
+</body>
+</html>

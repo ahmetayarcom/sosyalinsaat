@@ -1,0 +1,95 @@
+﻿@model IEnumerable<bitirme.Entity.taseron>
+@{
+    ViewBag.Title = "Taseronlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('/theme/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="overlay-2"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 mb-5 text-center">
+                <h1 class="mb-3 bread">Hizmet Verenler</h1>
+                <h3 class="mb-3 bread">Taşeronlar</h3>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Ana Sayfa<i class="ion-ios-arrow-forward"></i></a></span> <span>Hizmet Verenler<i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-agent">
+    <div class="container">
+        <div class="row">
+
+            @*<div class="col-md-3 ftco-animate">
+                    <div class="agent">
+                        <div class="img">
+                            <img src="/theme/images/team-1.jpg" class="img-fluid" alt="Colorlib Template">
+                        </div>
+                        <div class="desc">
+                            <h3><a href="properties.html">Ben Ford</a></h3>
+                            <p class="h-info"><span class="ion-ios-filing icon"></span> <span class="details">43 Properties</span></p>
+                        </div>
+                    </div>
+                </div>*@
+            @foreach (var item in Model)
+            {
+                if (item.hesap.mail != "yokdaha")
+                {
+                    <div class="container col-md-4" style="margin-top:1%">
+                        <div style="text-align:center">
+                            <div class="agent" style="width:70%">
+                                <a href="@Url.Action("TProfil","taseron",new { id = item.ID })">
+                                    <div class="img">
+                                        <img src="@item.hesap.fotograf" class="img-fluid" alt="Colorlib Template">
+                                    </div>
+                                </a>
+                                <div class="desc" style="text-align:left">
+                                    <h3><span>@Html.DisplayFor(model => item.ad)</span></h3>
+                                    <p class="h-info"><span class="fas fa-envelope"></span> <span class="details">@Html.DisplayFor(model => item.hesap.mail)</span></p>
+                                    <p class="h-info"><span class="fas fa-hammer"></span> <span class="details">@Html.DisplayFor(model => item.calisanSayisi) çalışan</span></p>
+                                    <p class="h-info"><span class="fas fa-map-marked-alt"></span> <span class="details">@Html.DisplayFor(model => item.adres)</span></p>
+                                    <p class="h-info"><span class="fas fa-phone-alt"></span> <span class="details">@Html.DisplayFor(model => item.telno)</span></p>
+                                    <p class="h-info"><span class="fab fa-chrome"></span> <span class="details">@Html.DisplayFor(model => item.webadresi)</span></p>
+                                    @*<p class="h-info"><span class="fas fa-hammer"></span> <span class="details">@Html.DisplayFor(model => item.puan) puan</span></p>*@
+
+                                    @if (User.Identity.Name != item.hesap.mail)
+                                    {
+                                        <a href="@Url.Action("MPage","chat",new { id = item.hesapID })" class="buttonum3">Mesaj Gönder</a>
+                                    }
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+
+            }
+
+
+
+        </div>
+        @*<div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</section>
+

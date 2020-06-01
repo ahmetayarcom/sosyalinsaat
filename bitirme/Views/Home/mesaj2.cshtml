@@ -1,0 +1,233 @@
+﻿@using bitirme.Entity;
+@model Tuple<IEnumerable<bitirme.Entity.mesaj>, IEnumerable<bitirme.Entity.mesaj>>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sosyal İnşaatım</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="~/theme/css/mesaj.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/theme/login/images/icons/favicon.ico" />
+
+    <script src="https://kit.fontawesome.com/a2f6943789.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/theme/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/theme/css/animate.css">
+
+    <link rel="stylesheet" href="~/theme/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/theme/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/theme/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/theme/css/aos.css">
+    <link rel="stylesheet" href="~/theme/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/theme/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/theme/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="~/theme/css/flaticon.css">
+    <link rel="stylesheet" href="~/theme/css/icomoon.css">
+    <link rel="stylesheet" href="~/theme/css/style.css">
+    <link rel="stylesheet" href="~/theme/css/kendi.css">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar" style="color:#05728f">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="color:#212529">Sosyal İnşaatım</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Hakkimizda", "Home")" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Ilan", "Home")" class="nav-link">İlanlar</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hizmet Verenler
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68;">
+                            <a class="dropdown-item" href="@Url.Action("HVeren", "Home")">Firmalar</a>
+                            <a class="dropdown-item" href="@Url.Action("HVeren", "Home")">Ustalar</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("HVeren", "Home")">Tümü</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="@Url.Action("Iletisim", "Home")" class="nav-link">İletişim</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown" style="background-color:rgb(249,249,249);border-radius:10px">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hesabım
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#d4ca68">
+                                <a class="dropdown-item" href="@Url.Action("PP", "hesap")">Profil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Security")">Çıkış</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="btn btn-primary py-3 px-4 nav-link" style="margin-right:5px;" href="@Url.Action("Login", "Security")">Giriş</a></li>
+                        <li class="nav-item"><a style="" href="@Url.Action("Create", "hesap")" class="btn btn-primary py-3 px-4 nav-link">Kayıt Ol</a></li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+
+    <section class="ftco-section goto-here" style="padding-top:3%">
+        <div class="container" style="background-color:rgb(249,249,249);border-radius:20px;padding-top:1%">
+            <div class="container">
+                <h3 class=" text-center">Mesajlar</h3>
+
+                <div class="messaging">
+                    <div class="inbox_msg">
+                        <div class="inbox_people">
+                            <div class="headind_srch">
+                                <div class="recent_heading">
+                                    <h4>Recent</h4>
+                                </div>
+                                <div class="srch_bar">
+                                    <div class="stylish-input-group">
+                                        <input type="text" class="search-bar" placeholder="Search">
+                                        <span class="input-group-addon">
+                                            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inbox_chat">
+
+                                @{int i = 1;}
+                                @foreach (var item in Model.Item1)
+                                {
+
+                                    <a href="@Url.Action("MPage","mesaj",new {id=item.hesap.ID})">
+                                        <div id="@("tr"+i)" class="chat_list">
+                                            <div class="chat_people">
+                                                <div class="chat_img"> <img src="/theme/images/team-1.jpg" alt="sunil"> </div>
+                                                <div class="chat_ib">
+                                                    <h5>@item.hesap.mail <span class="chat_date">@item.sendTime</span></h5>
+                                                    <p>
+                                                        @item.icerik
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    i++;
+                                }
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="mesgs">
+                            <div class="msg_history">
+
+                                @foreach (var item in Model.Item2)
+                                {
+                                    if (item.hesap.mail == User.Identity.Name)
+                                    {
+                                        <div class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img src="/theme/images/team-1.jpg" alt="sunil"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p>
+                                                        @item.icerik
+                                                    </p>
+                                                    <span class="time_date">@item.sendTime</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    if (item.hesap1.mail == User.Identity.Name)
+                                    {
+                                        <div class="outgoing_msg">
+                                            <div class="sent_msg">
+                                                <p>
+                                                    @item.icerik
+                                                </p>
+                                                <span class="time_date">@item.sendTime</span>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                }
+
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.Hidden("gonderenHesapID", (object)ViewBag.gonderenHesapID)
+                                @Html.Hidden("alanHesapID", (object)ViewBag.alanHesapID)
+                                @Html.Hidden("anaMesajID", (object)ViewBag.anaMesajID)
+
+                                <div class="type_msg">
+                                    <div class="input_msg_write">
+                                        @Html.TextBoxFor(model => model.Item2.FirstOrDefault().icerik, new { htmlAttributes = new { @class = "form-control" } })
+                                        <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    @*<p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section"></footer>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="~/theme/js/jquery.min.js"></script>
+    <script src="~/theme/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/theme/js/popper.min.js"></script>
+    <script src="~/theme/js/bootstrap.min.js"></script>
+    <script src="~/theme/js/jquery.easing.1.3.js"></script>
+    <script src="~/theme/js/jquery.waypoints.min.js"></script>
+    <script src="~/theme/js/jquery.stellar.min.js"></script>
+    <script src="~/theme/js/owl.carousel.min.js"></script>
+    <script src="~/theme/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/theme/js/aos.js"></script>
+    <script src="~/theme/js/jquery.animateNumber.min.js"></script>
+    <script src="~/theme/js/bootstrap-datepicker.js"></script>
+    <script src="~/theme/js/jquery.timepicker.min.js"></script>
+    <script src="~/theme/js/scrollax.min.js"></script>
+    <script src="~/theme/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/theme/js/google-map.js"></script>
+    <script src="~/theme/js/main.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <script src="~/Scripts/myscript.js"></script>
+</body>
+</html>

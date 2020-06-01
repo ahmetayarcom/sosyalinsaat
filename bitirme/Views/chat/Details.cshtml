@@ -1,0 +1,50 @@
+﻿@model bitirme.Entity.chat
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>chat</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.gonderenID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gonderenID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hesap.mail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hesap.mail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hesap1.mail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hesap1.mail)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

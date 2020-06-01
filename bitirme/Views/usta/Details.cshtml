@@ -1,0 +1,66 @@
+﻿@model bitirme.Entity.usta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesap.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taseron.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taseron.ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

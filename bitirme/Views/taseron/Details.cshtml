@@ -1,0 +1,90 @@
+﻿@model bitirme.Entity.taseron
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.calisanSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calisanSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.webadresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.webadresi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.issayisi1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.issayisi1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesap.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesap.mail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

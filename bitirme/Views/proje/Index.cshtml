@@ -1,0 +1,59 @@
+﻿@model IEnumerable<bitirme.Entity.proje>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Projeler</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.muteahhit.ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isSayisi)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.foto)*@
+            fotoğraf
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.muteahhit.ad)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
